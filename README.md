@@ -38,10 +38,10 @@ Now that Discover knows the service name and port, it will register the service 
 
 Where:
 
-*`<prefix>`: Defined in the configuration of Discover. By default this is `/discover`.
-*`<realm>`: Defined in the configuration of Discover. Used to segment services into logical groups.
-*`<host>`: Identifier of the host this service was deployed on. This is determined using a strategy of a custom configuration value, then the AWS instance-id if availalbe, and lastly falling back to the hostname of the machine.
-*`<container-id>`: This is the short 12 byte Docker container ID hosting the service.
+- `<prefix>`: Defined in the configuration of Discover. By default this is `/discover`.
+- `<realm>`: Defined in the configuration of Discover. Used to segment services into logical groups.
+- `<host>`: Identifier of the host this service was deployed on. This is determined using a strategy of a custom configuration value, then the AWS instance-id if availalbe, and lastly falling back to the hostname of the machine.
+- `<container-id>`: This is the short 12 byte Docker container ID hosting the service.
 
 The value stored at the above path will look like:
 ```
@@ -50,9 +50,9 @@ The value stored at the above path will look like:
 
 Where:
 
-*`<protocol>`: The protocol expected at the IP/Port. Valid values are `tcp` or `udp`.
-*`<public-ip-address>`: The publicly routable IP address for the host machine.
-*`<public-port>`: The port assigned by Docker that maps to the internal port defined by the service.
+- `<protocol>`: The protocol expected at the IP/Port. Valid values are `tcp` or `udp`.
+- `<public-ip-address>`: The publicly routable IP address for the host machine.
+- `<public-port>`: The port assigned by Docker that maps to the internal port defined by the service.
 
 ### Multiple Service Lookup
 
