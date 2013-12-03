@@ -1,0 +1,13 @@
+{
+  "discover": {
+    "serviceVariable": "DISCOVER"
+  },
+  "docker": {
+    "socketPath": false
+  },
+  "etcd": {
+    "prefix": "discover/",
+    "host": "127.0.0.1",
+    "port": 4001
+  }
+}

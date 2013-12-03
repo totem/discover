@@ -1,0 +1,53 @@
+{
+  "name": "totem-discover",
+  "version": "0.0.1",
+  "description": "Totem Service Discovery for Docker",
+  "keywords": [
+    "docker",
+    "etcd",
+    "totem",
+    "service",
+    "discovery"
+  ],
+  "main": "index.js",
+  "bin": {
+    "discover": "index.js"
+  },
+  "dependencies" : {
+    "async": "*",
+    "request": "*",
+    "winston": "*",
+    "nconf": "*",
+    "docker.io": "*",
+    "node-etcd": "*",
+    "set": "*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "rewire": "*",
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha-cov": "*",
+    "mocha-term-cov-reporter": "*",
+    "grunt-cli": "*",
+    "grunt-shell": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/bin/grunt test",
+    "blanket": {
+      "pattern": [
+        "discover/lib",
+        "discover/index"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/totem/discover.git"
+  },
+  "author": "Mike Moulton <mike@meltmedia.com>",
+  "bugs": {
+    "url": "https://github.com/totem/discover/issues"
+  },
+  "license" : "MIT"
+}
