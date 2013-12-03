@@ -1,4 +1,4 @@
-Discover: Docker Service Discovery Registry
+Discover: Docker Service Discovery
 ========
 
 This service watches [Docker](http://docker.io) for containers starting and stopping to publish any advertised services out to [Etcd](https://github.com/coreos/etcd). At this time, consumption of the published services can be done by querying Etcd directly. There are however plans to develop client libraries making this trivial.

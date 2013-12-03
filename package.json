@@ -1,7 +1,7 @@
 {
-  "name": "totem-discover",
+  "name": "docker-discover",
   "version": "0.0.1",
-  "description": "Totem Service Discovery for Docker",
+  "description": "Service Discovery for Docker",
   "keywords": [
     "docker",
     "etcd",
