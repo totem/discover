@@ -1,6 +1,8 @@
 Discover: Docker Service Discovery
 ========
 
+[![Build Status](https://travis-ci.org/totem/discover.png?branch=master)](https://travis-ci.org/totem/discover)
+
 This service watches [Docker](http://docker.io) for containers starting and stopping to publish any advertised services out to [Etcd](https://github.com/coreos/etcd). At this time, consumption of the published services can be done by querying Etcd directly. There are however plans to develop client libraries making this trivial.
 
 THe discovery of services is done by inspecting a custom ENV variable defined in the Dockerfile of the container. The ENV variable describes the service names and local ports they can be found on. Discover translates these to the public IP / Port assigned by Docker.
