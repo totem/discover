@@ -1,7 +1,9 @@
-Discover: Docker Service Discovery Registry
+Discover: Docker Service Discovery
 ========
 
-This service watches [Docker](http://docker.io) for containers starting and stopping to publish any advertised services out to [Etcd](https://github.com/coreos/etcd). Services are discoverd by inspecting a custom ENV variable defined in the Dockerfile of the container. The ENV variable describes the service names and local ports they can be found on. Discover translates these to the public IP / Port assigned by Docker.
+This service watches [Docker](http://docker.io) for containers starting and stopping to publish any advertised services out to [Etcd](https://github.com/coreos/etcd). At this time, consumption of the published services can be done by querying Etcd directly. There are however plans to develop client libraries making this trivial.
+
+THe discovery of services is done by inspecting a custom ENV variable defined in the Dockerfile of the container. The ENV variable describes the service names and local ports they can be found on. Discover translates these to the public IP / Port assigned by Docker.
 
 ## How It Works
 
@@ -26,7 +28,7 @@ ENTRYPOINT ['static']
 
 ### Service Discovery and Publication
 
-Upon starting the container using `docker run -d -p 8080 static-web-server`, Docker will emit a start event for this container. Discover will listen for this event. Upon receiving the event, Discover will inspect the started container looking for a ENV variable mathing the value of the `discover:serviceVariable` configuration variable. By default, this value will be `DISCOVER`.
+Upon starting the container using `docker run -d -p 8080 static-web-server`, Docker will emit a start event for this container. Discover will listen for this event. Upon receiving the event, Discover will inspect the started container looking for a ENV variable matching the value of the `discover:serviceVariable` configuration variable. By default, this value will be `DISCOVER`.
 
 In the case of our example, this ENV variable is set to `static-web-server:8080`. Discover will read this value and determine that the container that just started is exposing a service named `static-web-server` and it can be found on the private container port of 8080. *Note: by default tcp is assumed, however you can explcitly specify if the port is expecting tcp or udp.*
 
@@ -38,10 +40,10 @@ Now that Discover knows the service name and port, it will register the service 
 
 Where:
 
-*`<prefix>`: Defined in the configuration of Discover. By default this is `/discover`.
-*`<realm>`: Defined in the configuration of Discover. Used to segment services into logical groups.
-*`<host>`: Identifier of the host this service was deployed on. This is determined using a strategy of a custom configuration value, then the AWS instance-id if availalbe, and lastly falling back to the hostname of the machine.
-*`<container-id>`: This is the short 12 byte Docker container ID hosting the service.
+- `<prefix>`: Defined in the configuration of Discover. By default this is `/discover`.
+- `<realm>`: Defined in the configuration of Discover. Used to segment services into logical groups.
+- `<host>`: Identifier of the host this service was deployed on. This is determined using a strategy of a custom configuration value, then the AWS instance-id if availalbe, and lastly falling back to the hostname of the machine.
+- `<container-id>`: This is the short 12 byte Docker container ID hosting the service.
 
 The value stored at the above path will look like:
 ```
@@ -50,9 +52,9 @@ The value stored at the above path will look like:
 
 Where:
 
-*`<protocol>`: The protocol expected at the IP/Port. Valid values are `tcp` or `udp`.
-*`<public-ip-address>`: The publicly routable IP address for the host machine.
-*`<public-port>`: The port assigned by Docker that maps to the internal port defined by the service.
+- `<protocol>`: The protocol expected at the IP/Port. Valid values are `tcp` or `udp`.
+- `<public-ip-address>`: The publicly routable IP address for the host machine.
+- `<public-port>`: The port assigned by Docker that maps to the internal port defined by the service.
 
 ### Multiple Service Lookup
 
