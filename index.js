@@ -58,11 +58,10 @@ function main() {
     winston.level = 'debug';
   }
 
-  console.log('   ___                   '.cyan);
-  console.log('  / _ \\_______ __ ____ __'.cyan);
-  console.log(' / ___/ __/ _ \\\\ \\ / // /'.cyan);
-  console.log('/_/  /_/  \\___/_\\_\\\\_, / '.cyan);
-  console.log('                  /___/  '.cyan);
+  console.log('   ___  _                         '.cyan);
+  console.log('  / _ \\(_)__ _______ _  _____ ____'.cyan);
+  console.log(' / // / (_-</ __/ _ \\ |/ / -_) __/'.cyan);
+  console.log('/____/_/___/\\__/\\___/___/\\__/_/   '.cyan);
 
   try {
   
