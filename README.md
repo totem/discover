@@ -121,6 +121,6 @@ The setup of Docker and Etcd are outside of the scope of this document.
 Once Docker and Etcd are setup, installing and running Discover is as simple as:
 
 ```bash
-npm install -g totem-discover
+npm install -g docker-discover
 discover --config config-file.json
 ```
