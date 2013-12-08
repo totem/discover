@@ -13,6 +13,7 @@
 
 var winston = require('winston'),
     os = require('os'),
+    path = require('path'),
     request = require('request'),
     async = require('async'),
     Discover = require('./lib/discover');
@@ -44,7 +45,7 @@ function main() {
   }
 
   // Last case scenerio, we set sane defaults
-  nconf.use('file', { file: './config/defaults.json' });
+  nconf.use('file', { file: path.join(__dirname, 'config/defaults.json') });
 
   // Configure log destinations
   if (nconf.get('log')) {
