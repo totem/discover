@@ -279,12 +279,14 @@
       }
     },
     "docker.io": {
-      "version": "0.9.7",
-      "from": "docker.io@",
+      "version": "0.9.4",
+      "from": "docker.io@*",
+      "resolved": "https://registry.npmjs.org/docker.io/-/docker.io-0.9.4.tgz",
       "dependencies": {
         "docker-modem": {
-          "version": "0.1.2",
+          "version": "0.1.0",
           "from": "docker-modem@*",
+          "resolved": "https://registry.npmjs.org/docker-modem/-/docker-modem-0.1.0.tgz",
           "dependencies": {
             "querystring": {
               "version": "0.2.0",
@@ -311,7 +313,8 @@
         },
         "node-v8-clone": {
           "version": "0.4.5",
-          "from": "node-v8-clone@~0.4.5"
+          "from": "node-v8-clone@~0.4.5",
+          "resolved": "https://registry.npmjs.org/node-v8-clone/-/node-v8-clone-0.4.5.tgz"
         }
       }
     },
