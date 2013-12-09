@@ -10,3 +10,7 @@
 ### 0.1.2 (Dec 6, 2013)
 
 * Fixed an issue where default config would not load when globally installed 
+
+### 0.1.3 (Dec 8, 2013)
+
+* Updates to reflect a refactor of dependent docker.io library that changed the way streams are handled.

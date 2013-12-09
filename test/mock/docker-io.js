@@ -1,5 +1,7 @@
 'use strict';
 
+var events = require('events');
+
 var START_EVENT = module.exports.START_EVENT = {
   status: 'start',
   id: 'started-container',
@@ -253,8 +255,10 @@ module.exports.validMock = function (config) {
       cb(null, { version: 'mock docker' });
     },
     'events': function (cb) {
+      var emitter = new events.EventEmitter();
       var eventStr = JSON.stringify(START_EVENT);
-      cb(null, eventStr);
+      cb(null, emitter);
+      emitter.emit('data', eventStr);
     },
     containers: {
       list: function (cb) {
@@ -285,13 +289,16 @@ module.exports.validEventMock = function (config) {
       cb(null, { version: 'mock docker' });
     },
     'events': function (cb) {
-      cb(null, null);
+      var emitter = new events.EventEmitter();
+      cb(null, emitter);
+
+      emitter.emit('data', null);
 
       var eventStr = JSON.stringify(START_EVENT);
-      cb(null, eventStr);
+      emitter.emit('data', eventStr);
 
       eventStr = JSON.stringify(STOP_EVENT);
-      cb(null, eventStr);
+      emitter.emit('data', eventStr);
     },
     containers: {
       list: function (cb) {
@@ -322,8 +329,10 @@ module.exports.reconcileUnpublishMock = function (config) {
       cb(null, { version: 'mock docker' });
     },
     'events': function (cb) {
+      var emitter = new events.EventEmitter();
       var eventStr = JSON.stringify(START_EVENT);
-      cb(null, eventStr);
+      cb(null, emitter);
+      emitter.emit('data', eventStr);
     },
     containers: {
       list: function (cb) {
@@ -375,8 +384,10 @@ module.exports.malformedMock = function (config) {
       cb(null, { version: 'mock docker' });
     },
     'events': function (cb) {
+      var emitter = new events.EventEmitter();
       var eventStr = '{[]';
-      cb(null, eventStr);
+      cb(null, emitter);
+      emitter.emit('data', eventStr);
     },
     containers: {
       list: function (cb) {
