@@ -95,7 +95,8 @@ function main() {
           config(null, {
             socketPath: nconf.get('docker:socketPath'),
             host: nconf.get('docker:host'),
-            port: nconf.get('docker:port')
+            port: nconf.get('docker:port'),
+            version: nconf.get('docker:version')
           });
         },
         etcd: function configureEtcd(config) {
