@@ -22,3 +22,7 @@
 ### 0.1.5 (Dec 11, 2013)
 
 * Upgrade to docker.io v0.9.8 to resolve a variable scope issue causing bad data to be returned
+
+### 0.1.6 (Dec 11, 2013)
+
+* Added support to specify the Docker API version to target

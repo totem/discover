@@ -3,7 +3,8 @@
     "serviceVariable": "DISCOVER"
   },
   "docker": {
-    "socketPath": false
+    "socketPath": false,
+    "version": "v1.5"
   },
   "etcd": {
     "prefix": "discover/",
