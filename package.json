@@ -1,6 +1,6 @@
 {
   "name": "docker-discover",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Service Discovery for Docker",
   "keywords": [
     "docker",
