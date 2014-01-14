@@ -23,7 +23,7 @@ RUN curl http://nodejs.org/dist/v0.10.20/node-v0.10.20-linux-x64.tar.gz | tar xz
 RUN apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 RUN npm install -g node-static
 
-ENV DISCOVER "static-web-server:8080"
+ENV DISCOVER static-web-server:8080
 
 ENTRYPOINT ['static']
 ```
@@ -69,7 +69,7 @@ Publishing services from a Docker container using Discover is simple. Simply def
 For example, to publish two services from a single container where `service1` is listening on 8080/tcp and `service2` is listening on 8125/udp you would specify the following ENV variable in your Dockerfile:
 
 ```
-ENV DISCOVER "service1:8080, service2:8125/udp"
+ENV DISCOVER service1:8080, service2:8125/udp
 ```
 
 ## Configuration
