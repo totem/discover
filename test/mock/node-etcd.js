@@ -1,27 +1,39 @@
 'use strict';
 
-var VALID_STARTED_HOSTS_PAYLOAD = [{
+var VALID_STARTED_HOSTS_PAYLOAD = {
   "action": "get",
-  "index": 1,
-  "key": "/unit-test/host/test-host/started-container",
-  "term": 8,
-  "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
-}];
+  "node": {
+    "createdIndex": 50,
+    "dir": true,
+    "key": "/unit-test/host/test-host",
+    "modifiedIndex": 50,
+    "nodes": [{
+      "createdIndex": 1,
+      "modifiedIndex": 1,
+      "key": "/unit-test/host/test-host/started-container",
+      "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
+    }]
+  }
+}
 
 var VALID_HOST_PAYLOAD = {
   "action": "get",
-  "index": 1,
-  "key": "/unit-test/host/test-host/started-container",
-  "term": 8,
-  "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
-};
+  "node": {
+    "createdIndex": 1,
+    "modifiedIndex": 1,
+    "key": "/unit-test/host/test-host/started-container",
+    "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
+  }
+}
 
 var INVALID_HOST_PAYLOAD = {
   "action": "get",
-  "index": 1,
-  "key": "/unit-test/host/test-host/started-container",
-  "term": 8,
-  "value": "[{]}"
+  "node": {
+    "createdIndex": 1,
+    "modifiedIndex": 1,
+    "key": "/unit-test/host/test-host/started-container",
+    "value": "[{]}"
+  }
 };
 
 module.exports.validMock = function (host, port) {
