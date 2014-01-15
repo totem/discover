@@ -26,3 +26,7 @@
 ### 0.1.6 (Dec 11, 2013)
 
 * Added support to specify the Docker API version to target
+
+### 0.2.0 (Jan 15, 2014)
+
+* Upgraded `node-etcd` lib to support Etcd v2 API by default

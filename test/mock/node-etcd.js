@@ -41,7 +41,7 @@ module.exports.validMock = function (host, port) {
     set: function (key, value, cb) {
       cb(null);
     },
-    del: function (key, cb) {
+    del: function (key, opt, cb) {
       cb(null);
     }
   };
@@ -66,7 +66,7 @@ module.exports.reconcilePublishMock = function (host, port) {
     set: function (key, value, cb) {
       cb(null);
     },
-    del: function (key, cb) {
+    del: function (key, opt, cb) {
       cb(null);
     }
   };
@@ -82,7 +82,7 @@ module.exports.erroredGetSetMock = function (host, port) {
     set: function (key, value, cb) {
       cb(new Error('set error'));
     },
-    del: function (key, cb) {
+    del: function (key, opt, cb) {
       cb(new Error('delete error'));
     }
   };
@@ -104,7 +104,7 @@ module.exports.erroredDelMock = function (host, port) {
     set: function (key, value, cb) {
       cb(new Error('set error'));
     },
-    del: function (key, cb) {
+    del: function (key, opt, cb) {
       cb(new Error('delete error'));
     }
   };
@@ -126,7 +126,7 @@ module.exports.malformedMock = function (host, port) {
     set: function (key, value, cb) {
       cb(null);
     },
-    del: function (key, cb) {
+    del: function (key, opt, cb) {
       cb(null);
     }
   };
