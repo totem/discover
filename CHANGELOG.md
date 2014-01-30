@@ -38,3 +38,7 @@
 * Updated all dependencies to their latest versions
 
 Note: This relase is required for Docker 0.6.5 and above.
+
+### 0.3.1 (Jan 29, 2014)
+
+* Resolved issue where container IDs were not always stored in short (12 char) form when originating from docker event stream.
