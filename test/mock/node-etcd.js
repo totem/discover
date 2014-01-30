@@ -10,8 +10,8 @@ var VALID_STARTED_HOSTS_PAYLOAD = {
     "nodes": [{
       "createdIndex": 1,
       "modifiedIndex": 1,
-      "key": "/unit-test/host/test-host/started-container",
-      "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
+      "key": "/unit-test/host/test-host/started-id-1",
+      "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-id-1\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-id-1\"}"
     }]
   }
 }
@@ -21,8 +21,8 @@ var VALID_HOST_PAYLOAD = {
   "node": {
     "createdIndex": 1,
     "modifiedIndex": 1,
-    "key": "/unit-test/host/test-host/started-container",
-    "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-container\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-container\"}"
+    "key": "/unit-test/host/test-host/started-id-1",
+    "value": "{\"service1\":\"/unit-test/service/service1/test-realm/test-host/started-id-1\",\"service2\":\"/unit-test/service/service2/test-realm/test-host/started-id-1\"}"
   }
 }
 
@@ -31,7 +31,7 @@ var INVALID_HOST_PAYLOAD = {
   "node": {
     "createdIndex": 1,
     "modifiedIndex": 1,
-    "key": "/unit-test/host/test-host/started-container",
+    "key": "/unit-test/host/test-host/started-id-1",
     "value": "[{]}"
   }
 };
@@ -40,7 +40,7 @@ module.exports.validMock = function (host, port) {
   var client = {
     get: function (key, cb) {
       switch (key) {
-        case '/unit-test/host/test-host/started-container':
+        case '/unit-test/host/test-host/started-id-1':
           cb(null, VALID_HOST_PAYLOAD);
           break;
         case '/unit-test/host/test-host/':
@@ -65,7 +65,7 @@ module.exports.reconcilePublishMock = function (host, port) {
   var client = {
     get: function (key, cb) {
       switch (key) {
-        case '/unit-test/host/test-host/started-container':
+        case '/unit-test/host/test-host/started-id-1':
           cb(null, VALID_HOST_PAYLOAD);
           break;
         case '/unit-test/host/test-host/':
@@ -106,7 +106,7 @@ module.exports.erroredDelMock = function (host, port) {
   var client = {
     get: function (key, cb) {
       switch (key) {
-        case '/unit-test/host/test-host/started-container':
+        case '/unit-test/host/test-host/started-id-1':
           cb(null, VALID_HOST_PAYLOAD);
           break;
         default:
@@ -128,7 +128,7 @@ module.exports.malformedMock = function (host, port) {
   var client = {
     get: function (key, cb) {
       switch (key) {
-        case '/unit-test/host/test-host/started-container':
+        case '/unit-test/host/test-host/started-id-1':
           cb(null, INVALID_HOST_PAYLOAD);
           break;
         default:

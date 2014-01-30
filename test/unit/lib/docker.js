@@ -116,7 +116,7 @@ describe('Docker', function () {
     it('should call the publishedServices() with started container id, returning a list of services', function (done) {
       var Docker = dockerInstance(),
           docker = new Docker(VALID_CONFIG);
-      docker.publishedServices('started-container', function (err, services) {
+      docker.publishedServices('started-id-1', function (err, services) {
         expect(err).to.not.exist;
         expect(services).to.have.length(2);
         done();
@@ -126,7 +126,7 @@ describe('Docker', function () {
     it('should call the publishedServices() with stopped container id, returning an error', function (done) {
       var Docker = dockerInstance(),
           docker = new Docker(VALID_CONFIG);
-      docker.publishedServices('stopped-container', function (err, services) {
+      docker.publishedServices('stopped-id-1', function (err, services) {
         expect(err).to.exist;
         expect(services).to.not.exist;
         done();
@@ -136,7 +136,7 @@ describe('Docker', function () {
     it('should call the publishedServices() with container id with malformed service definitions, returning an error', function (done) {
       var Docker = dockerInstance('malformed'),
           docker = new Docker(VALID_CONFIG);
-      docker.publishedServices('malformed-container', function (err, services) {
+      docker.publishedServices('malform-id-1', function (err, services) {
         expect(err).to.not.exist;
         expect(services).to.have.length(0);
         done();
@@ -146,7 +146,7 @@ describe('Docker', function () {
     it('should call the publishedServices() with valid container id, returning an error', function (done) {
       var Docker = dockerInstance('errored'),
           docker = new Docker(VALID_CONFIG);
-      docker.publishedServices('started-container', function (err, services) {
+      docker.publishedServices('started-id-1', function (err, services) {
         expect(err).to.exist;
         expect(services).to.not.exist;
         done();
