@@ -45,7 +45,7 @@ function main() {
   }
 
   // Last case scenerio, we set sane defaults
-  nconf.file('defaults', path.join(__dirname, 'etc/defaults.json'));
+  nconf.file('defaults', path.join(__dirname, 'config/defaults.json'));
 
   var logOptions = {
     label: process.pid,
