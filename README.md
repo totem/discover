@@ -82,7 +82,7 @@ The following configuration options are available:
 - `docker`
   - `port`: port to connect to Docker API on. Default: 4243
   - `host`: host to connect to Docker API on. Default: localhost
-  - `version`: API version to target. Default: v1.5
+  - `version`: API version to target. Default: v1.8
   - `socketPath`: path to Docker socket on host. Use of this overrides host/port. Default: false
 - `etcd`
   - `port`: port to connect to Etcd on. Default: 4001

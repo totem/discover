@@ -1,13 +1,13 @@
 {
   "name": "docker-discover",
-  "version": "0.1.6",
+  "version": "0.2.1",
   "dependencies": {
     "async": {
-      "version": "0.2.9",
+      "version": "0.2.10",
       "from": "async@*"
     },
     "request": {
-      "version": "2.31.0",
+      "version": "2.33.0",
       "from": "request@*",
       "dependencies": {
         "qs": {
@@ -31,8 +31,8 @@
           "from": "mime@~1.2.9"
         },
         "tough-cookie": {
-          "version": "0.9.15",
-          "from": "tough-cookie@~0.9.15",
+          "version": "0.12.1",
+          "from": "tough-cookie@>=0.12.0",
           "dependencies": {
             "punycode": {
               "version": "1.2.3",
@@ -50,8 +50,7 @@
               "dependencies": {
                 "delayed-stream": {
                   "version": "0.0.5",
-                  "from": "delayed-stream@0.0.5",
-                  "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.5.tgz"
+                  "from": "delayed-stream@0.0.5"
                 }
               }
             }
@@ -67,18 +66,15 @@
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2",
-              "from": "assert-plus@0.1.2",
-              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+              "from": "assert-plus@0.1.2"
             },
             "asn1": {
               "version": "0.1.11",
-              "from": "asn1@0.1.11",
-              "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.1.11.tgz"
+              "from": "asn1@0.1.11"
             },
             "ctype": {
               "version": "0.5.2",
-              "from": "ctype@0.5.2",
-              "resolved": "https://registry.npmjs.org/ctype/-/ctype-0.5.2.tgz"
+              "from": "ctype@0.5.2"
             }
           }
         },
@@ -148,8 +144,7 @@
                   "dependencies": {
                     "delayed-stream": {
                       "version": "0.0.5",
-                      "from": "delayed-stream@0.0.5",
-                      "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.5.tgz"
+                      "from": "delayed-stream@0.0.5"
                     }
                   }
                 }
@@ -225,6 +220,10 @@
       "version": "0.6.9",
       "from": "nconf@*",
       "dependencies": {
+        "async": {
+          "version": "0.2.9",
+          "from": "async@0.2.9"
+        },
         "ini": {
           "version": "1.1.0",
           "from": "ini@1.x.x"
@@ -251,9 +250,9 @@
       "from": "docker.io@*",
       "dependencies": {
         "docker-modem": {
-          "version": "0.1.4",
+          "version": "0.1.6",
           "from": "docker-modem@*",
-          "resolved": "https://registry.npmjs.org/docker-modem/-/docker-modem-0.1.4.tgz",
+          "resolved": "https://registry.npmjs.org/docker-modem/-/docker-modem-0.1.6.tgz",
           "dependencies": {
             "querystring": {
               "version": "0.2.0",
@@ -285,9 +284,9 @@
       }
     },
     "node-etcd": {
-      "version": "2.0.5",
+      "version": "2.0.6",
       "from": "node-etcd@*",
-      "resolved": "https://registry.npmjs.org/node-etcd/-/node-etcd-2.0.5.tgz",
+      "resolved": "https://registry.npmjs.org/node-etcd/-/node-etcd-2.0.6.tgz",
       "dependencies": {
         "underscore": {
           "version": "1.5.2",
@@ -319,18 +318,15 @@
               "dependencies": {
                 "assert-plus": {
                   "version": "0.1.2",
-                  "from": "assert-plus@0.1.2",
-                  "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+                  "from": "assert-plus@0.1.2"
                 },
                 "asn1": {
                   "version": "0.1.11",
-                  "from": "asn1@0.1.11",
-                  "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.1.11.tgz"
+                  "from": "asn1@0.1.11"
                 },
                 "ctype": {
                   "version": "0.5.2",
-                  "from": "ctype@0.5.2",
-                  "resolved": "https://registry.npmjs.org/ctype/-/ctype-0.5.2.tgz"
+                  "from": "ctype@0.5.2"
                 }
               }
             },
@@ -386,8 +382,7 @@
                   "dependencies": {
                     "delayed-stream": {
                       "version": "0.0.5",
-                      "from": "delayed-stream@0.0.5",
-                      "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.5.tgz"
+                      "from": "delayed-stream@0.0.5"
                     }
                   }
                 }

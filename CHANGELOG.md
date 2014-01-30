@@ -30,3 +30,11 @@
 ### 0.2.0 (Jan 15, 2014)
 
 * Upgraded `node-etcd` lib to support Etcd v2 API by default
+
+### 0.3.0 (Jan 29, 2014)
+
+* Updated port mapping discovery code to support docker v1.8 API
+* Updated default docker API version to v1.8
+* Updated all dependencies to their latest versions
+
+Note: This relase is required for Docker 0.6.5 and above.

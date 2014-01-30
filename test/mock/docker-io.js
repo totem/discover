@@ -33,10 +33,11 @@ var CONTAINER_START = module.exports.CONTAINER_START = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080",
-      "8081"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {},
+      "8081/udp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -75,13 +76,20 @@ var CONTAINER_START = module.exports.CONTAINER_START = {
     "IPPrefixLen": 16,
     "Gateway": "172.17.42.1",
     "Bridge": "docker0",
-    "PortMapping": {
-      "Tcp": {
-        "8080": "49157"
-      },
-      "Udp": {
-        "8081": "49158"
-      }
+    "PortMapping": null,
+    "Ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49157"
+        }
+      ],
+      "8081/udp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49158"
+        }
+      ]
     }
   },
   "SysInitPath": "/usr/bin/docker",
@@ -109,9 +117,10 @@ var CONTAINER_STOP = module.exports.CONTAINER_STOP = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -147,7 +156,8 @@ var CONTAINER_STOP = module.exports.CONTAINER_STOP = {
     "IPPrefixLen": 0,
     "Gateway": "",
     "Bridge": "",
-    "PortMapping": null
+    "PortMapping": null,
+    "Ports": null
   },
   "SysInitPath": "/usr/bin/docker",
   "ResolvConfPath": "/var/lib/docker/containers/ae99418bd71ba9700b4d3ae89e4afa66d240524ad3cbf407c8db44a618031217/resolv.conf",
@@ -174,10 +184,11 @@ var CONTAINER_MALFORMED = module.exports.CONTAINER_MALFORMED = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080",
-      "8081"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {},
+      "8081/udp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -216,13 +227,20 @@ var CONTAINER_MALFORMED = module.exports.CONTAINER_MALFORMED = {
     "IPPrefixLen": 16,
     "Gateway": "172.17.42.1",
     "Bridge": "docker0",
-    "PortMapping": {
-      "Tcp": {
-        "8080": "49157"
-      },
-      "Udp": {
-        "8081": "49158"
-      }
+    "PortMapping": null,
+    "Ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49157"
+        }
+      ],
+      "8081/udp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49158"
+        }
+      ]
     }
   },
   "SysInitPath": "/usr/bin/docker",
