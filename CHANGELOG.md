@@ -42,3 +42,8 @@ Note: This relase is required for Docker 0.6.5 and above.
 ### 0.3.1 (Jan 29, 2014)
 
 * Resolved issue where container IDs were not always stored in short (12 char) form when originating from docker event stream.
+
+### 0.3.2 (Feb 24, 2014)
+
+* Better error handling for uncaught exceptions.
+* Handle state where port mapping from docker can be null.
