@@ -77,7 +77,7 @@ function main() {
   console.log('/____/_/___/\\__/\\___/___/\\__/_/   '.cyan);
 
   try {
-  
+
     configure(function (err, config) {
       if (err) {
         throw err;
@@ -85,7 +85,10 @@ function main() {
 
       winston.debug('Starting discover...');
       var discover = new Discover(config);
-      discover.start();
+
+      discover.once('connect', function () {
+        discover.start();
+      });
     });
 
   } catch (err) {
@@ -151,7 +154,7 @@ function main() {
           ], function () {
             config(null, {
               ip: nconf.get('host:ip') || hostIp,
-              realm: nconf.get('host:realm'),
+              realm: nconf.get('host:realm') || 'default',
               id: nconf.get('host:id') || hostId
             });
           });

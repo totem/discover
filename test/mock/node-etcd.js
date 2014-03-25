@@ -55,6 +55,9 @@ module.exports.validMock = function (host, port) {
     },
     del: function (key, opt, cb) {
       cb(null);
+    },
+    version: function (cb) {
+      cb(null, { version: 'mock' });
     }
   };
 
@@ -80,6 +83,9 @@ module.exports.reconcilePublishMock = function (host, port) {
     },
     del: function (key, opt, cb) {
       cb(null);
+    },
+    version: function (cb) {
+      cb(null, { version: 'mock' });
     }
   };
 
@@ -96,6 +102,9 @@ module.exports.erroredGetSetMock = function (host, port) {
     },
     del: function (key, opt, cb) {
       cb(new Error('delete error'));
+    },
+    version: function (cb) {
+      cb(null, { version: 'mock' });
     }
   };
 
@@ -118,6 +127,9 @@ module.exports.erroredDelMock = function (host, port) {
     },
     del: function (key, opt, cb) {
       cb(new Error('delete error'));
+    },
+    version: function (cb) {
+      cb(null, { version: 'mock' });
     }
   };
 
@@ -140,6 +152,9 @@ module.exports.malformedMock = function (host, port) {
     },
     del: function (key, opt, cb) {
       cb(null);
+    },
+    version: function (cb) {
+      cb(null, { version: 'mock' });
     }
   };
 
