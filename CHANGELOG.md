@@ -9,7 +9,7 @@
 
 ### 0.1.2 (Dec 6, 2013)
 
-* Fixed an issue where default config would not load when globally installed 
+* Fixed an issue where default config would not load when globally installed
 
 ### 0.1.3 (Dec 8, 2013)
 
@@ -47,3 +47,8 @@ Note: This relase is required for Docker 0.6.5 and above.
 
 * Better error handling for uncaught exceptions.
 * Handle state where port mapping from docker can be null.
+
+## 0.3.3 (Mar 25, 2014)
+
+* Check for valid Etcd / Docker instances before starting.
+* Updated README to reflect current configuration options.
