@@ -4,7 +4,7 @@
   },
   "docker": {
     "socketPath": false,
-    "version": "v1.5"
+    "version": "v1.8"
   },
   "etcd": {
     "prefix": "discover/",

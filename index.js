@@ -41,23 +41,35 @@ function main() {
 
   // Load custom config file
   if (nconf.get('config')) {
-    nconf.use('file', { file: nconf.get('config') });
+    nconf.file('config', nconf.get('config'));
   }
 
   // Last case scenerio, we set sane defaults
-  nconf.use('file', { file: path.join(__dirname, 'config/defaults.json') });
+  nconf.file('defaults', path.join(__dirname, 'config/defaults.json'));
 
-  // Configure log destinations
+  var logOptions = {
+    label: process.pid,
+    timestamp: true,
+    prettyPrint: true,
+    colorize: true
+  };
+
+  if (nconf.get('silly')) {
+    logOptions.level = 'silly';
+  } else if (nconf.get('debug')) {
+    logOptions.level = 'debug';
+  } else if (nconf.get('verbose')) {
+    logOptions.level = 'verbose';
+  }
+
   if (nconf.get('log')) {
-    winston.add(winston.transports.File, { timestamp: true, filename: nconf.get('log') });
-  } else {
-    winston.add(winston.transports.Console);
-    winston.cli();
+    logOptions.filename = nconf.get('log');
+    winston.add(winston.transports.File, logOptions);
   }
 
-  if (nconf.get('debug')) {
-    winston.level = 'debug';
-  }
+  // Configure the console logger
+  winston.add(winston.transports.Console, logOptions);
+
 
   console.log('   ___  _                         '.cyan);
   console.log('  / _ \\(_)__ _______ _  _____ ____'.cyan);
@@ -65,7 +77,7 @@ function main() {
   console.log('/____/_/___/\\__/\\___/___/\\__/_/   '.cyan);
 
   try {
-  
+
     configure(function (err, config) {
       if (err) {
         throw err;
@@ -73,7 +85,10 @@ function main() {
 
       winston.debug('Starting discover...');
       var discover = new Discover(config);
-      discover.start();
+
+      discover.once('connect', function () {
+        discover.start();
+      });
     });
 
   } catch (err) {
@@ -139,7 +154,7 @@ function main() {
           ], function () {
             config(null, {
               ip: nconf.get('host:ip') || hostIp,
-              realm: nconf.get('host:realm'),
+              realm: nconf.get('host:realm') || 'default',
               id: nconf.get('host:id') || hostId
             });
           });

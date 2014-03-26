@@ -9,7 +9,7 @@
 
 ### 0.1.2 (Dec 6, 2013)
 
-* Fixed an issue where default config would not load when globally installed 
+* Fixed an issue where default config would not load when globally installed
 
 ### 0.1.3 (Dec 8, 2013)
 
@@ -30,3 +30,25 @@
 ### 0.2.0 (Jan 15, 2014)
 
 * Upgraded `node-etcd` lib to support Etcd v2 API by default
+
+### 0.3.0 (Jan 29, 2014)
+
+* Updated port mapping discovery code to support docker v1.8 API
+* Updated default docker API version to v1.8
+* Updated all dependencies to their latest versions
+
+Note: This relase is required for Docker 0.6.5 and above.
+
+### 0.3.1 (Jan 29, 2014)
+
+* Resolved issue where container IDs were not always stored in short (12 char) form when originating from docker event stream.
+
+### 0.3.2 (Feb 24, 2014)
+
+* Better error handling for uncaught exceptions.
+* Handle state where port mapping from docker can be null.
+
+## 0.3.3 (Mar 25, 2014)
+
+* Check for valid Etcd / Docker instances before starting.
+* Updated README to reflect current configuration options.

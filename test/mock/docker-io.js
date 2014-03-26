@@ -4,14 +4,14 @@ var events = require('events');
 
 var START_EVENT = module.exports.START_EVENT = {
   status: 'start',
-  id: 'started-container',
+  id: 'started-id-1',
   from: 'base:latest',
   time: 1374067924
 };
 
 var STOP_EVENT = module.exports.STOP_EVENT = {
   status: 'stop',
-  id: 'started-container',
+  id: 'started-id-1',
   from: 'base:latest',
   time: 1374067924
 };
@@ -33,10 +33,11 @@ var CONTAINER_START = module.exports.CONTAINER_START = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080",
-      "8081"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {},
+      "8081/udp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -75,13 +76,20 @@ var CONTAINER_START = module.exports.CONTAINER_START = {
     "IPPrefixLen": 16,
     "Gateway": "172.17.42.1",
     "Bridge": "docker0",
-    "PortMapping": {
-      "Tcp": {
-        "8080": "49157"
-      },
-      "Udp": {
-        "8081": "49158"
-      }
+    "PortMapping": null,
+    "Ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49157"
+        }
+      ],
+      "8081/udp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49158"
+        }
+      ]
     }
   },
   "SysInitPath": "/usr/bin/docker",
@@ -109,9 +117,10 @@ var CONTAINER_STOP = module.exports.CONTAINER_STOP = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -147,7 +156,8 @@ var CONTAINER_STOP = module.exports.CONTAINER_STOP = {
     "IPPrefixLen": 0,
     "Gateway": "",
     "Bridge": "",
-    "PortMapping": null
+    "PortMapping": null,
+    "Ports": null
   },
   "SysInitPath": "/usr/bin/docker",
   "ResolvConfPath": "/var/lib/docker/containers/ae99418bd71ba9700b4d3ae89e4afa66d240524ad3cbf407c8db44a618031217/resolv.conf",
@@ -174,10 +184,11 @@ var CONTAINER_MALFORMED = module.exports.CONTAINER_MALFORMED = {
     "AttachStdin": false,
     "AttachStdout": false,
     "AttachStderr": false,
-    "PortSpecs": [
-      "8080",
-      "8081"
-    ],
+    "PortSpecs": null,
+    "ExposedPorts": {
+      "8080/tcp": {},
+      "8081/udp": {}
+    },
     "Tty": false,
     "OpenStdin": false,
     "StdinOnce": false,
@@ -216,13 +227,20 @@ var CONTAINER_MALFORMED = module.exports.CONTAINER_MALFORMED = {
     "IPPrefixLen": 16,
     "Gateway": "172.17.42.1",
     "Bridge": "docker0",
-    "PortMapping": {
-      "Tcp": {
-        "8080": "49157"
-      },
-      "Udp": {
-        "8081": "49158"
-      }
+    "PortMapping": null,
+    "Ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49157"
+        }
+      ],
+      "8081/udp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "49158"
+        }
+      ]
     }
   },
   "SysInitPath": "/usr/bin/docker",
@@ -235,7 +253,7 @@ var CONTAINER_MALFORMED = module.exports.CONTAINER_MALFORMED = {
 
 var CONTAINER_LIST = module.exports.CONTAINER_LIST = [
   {
-    "Id": "started-container",
+    "Id": "started-id-1",
     "Image": "dashboard",
     "Command": "/opt/dashboard/dist",
     "Created": 1367854155,
@@ -266,10 +284,10 @@ module.exports.validMock = function (config) {
       },
       inspect: function (id, cb) {
         switch (id) {
-          case 'started-container':
+          case 'started-id-1':
             cb(null, CONTAINER_START);
             break;
-          case 'stopped-container':
+          case 'stopped-id-1':
             cb(null, CONTAINER_STOP);
             break;
           default:
@@ -306,10 +324,10 @@ module.exports.validEventMock = function (config) {
       },
       inspect: function (id, cb) {
         switch (id) {
-          case 'started-container':
+          case 'started-id-1':
             cb(null, CONTAINER_START);
             break;
-          case 'stopped-container':
+          case 'stopped-id-1':
             cb(null, CONTAINER_STOP);
             break;
           default:
@@ -340,10 +358,10 @@ module.exports.reconcileUnpublishMock = function (config) {
       },
       inspect: function (id, cb) {
         switch (id) {
-          case 'started-container':
+          case 'started-id-1':
             cb(null, CONTAINER_START);
             break;
-          case 'stopped-container':
+          case 'stopped-id-1':
             cb(null, CONTAINER_STOP);
             break;
           default:
@@ -395,7 +413,7 @@ module.exports.malformedMock = function (config) {
       },
       inspect: function (id, cb) {
         switch (id) {
-          case 'malformed-container':
+          case 'malform-id-1':
             cb(null, CONTAINER_MALFORMED);
             break;
         };

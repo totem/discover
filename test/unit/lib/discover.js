@@ -97,7 +97,7 @@ describe('Discover', function () {
       var Discover = discoverInstance(),
           discover = Discover(VALID_CONFIG);
 
-      discover.publish('started-container', function (err, published) {
+      discover.publish('started-id-1', function (err, published) {
         expect(err).to.not.exist;
         expect(published).to.exist;
         expect(published).to.have.property('service1');
@@ -110,7 +110,7 @@ describe('Discover', function () {
       var Discover = discoverInstance(),
           discover = Discover(VALID_CONFIG);
 
-      discover.publish('stopped-container', function (err, published) {
+      discover.publish('stopped-id-1', function (err, published) {
         expect(err).to.exist;
         expect(published).to.not.exist;
         done();
@@ -132,7 +132,7 @@ describe('Discover', function () {
       var Discover = discoverInstance('erroredGetSet'),
           discover = Discover(VALID_CONFIG);
 
-      discover.publish('started-container', function (err, published) {
+      discover.publish('started-id-1', function (err, published) {
         expect(err).to.exist;
         expect(published).to.not.exist;
         done();
@@ -146,7 +146,7 @@ describe('Discover', function () {
       var Discover = discoverInstance(),
           discover = Discover(VALID_CONFIG);
 
-      discover.unpublish('started-container', function (err, unpublished) {
+      discover.unpublish('started-id-1', function (err, unpublished) {
         expect(err).to.not.exist;
         expect(unpublished).to.exist;
         expect(unpublished).to.have.property('service1');
@@ -170,7 +170,7 @@ describe('Discover', function () {
       var Discover = discoverInstance('malformed'),
           discover = Discover(VALID_CONFIG);
 
-      discover.unpublish('started-container', function (err, unpublished) {
+      discover.unpublish('started-id-1', function (err, unpublished) {
         expect(err).to.exist;
         expect(unpublished).to.not.exist;
         done();
@@ -181,7 +181,7 @@ describe('Discover', function () {
       var Discover = discoverInstance('erroredDel'),
           discover = Discover(VALID_CONFIG);
 
-      discover.unpublish('started-container', function (err, unpublished) {
+      discover.unpublish('started-id-1', function (err, unpublished) {
         expect(err).to.exist;
         expect(unpublished).to.not.exist;
         done();
@@ -197,7 +197,7 @@ describe('Discover', function () {
 
       discover.on('publish', function (data) {
         expect(data).to.exist;
-        expect(data.id).to.equal('started-container');
+        expect(data.id).to.equal('started-id-1');
         expect(data.services).to.have.property('service1');
         expect(data.services).to.have.property('service2');
         done();
@@ -212,7 +212,7 @@ describe('Discover', function () {
 
       discover.on('unpublish', function (data) {
         expect(data).to.exist;
-        expect(data.id).to.equal('started-container');
+        expect(data.id).to.equal('started-id-1');
         expect(data.services).to.have.property('service1');
         expect(data.services).to.have.property('service2');
         done();
@@ -229,7 +229,7 @@ describe('Discover', function () {
 
       discover.on('publish', function (data) {
         expect(data).to.exist;
-        expect(data.id).to.equal('started-container');
+        expect(data.id).to.equal('started-id-1');
         expect(data.services).to.have.property('service1');
         expect(data.services).to.have.property('service2');
         done();
@@ -244,7 +244,7 @@ describe('Discover', function () {
 
       discover.on('unpublish', function (data) {
         expect(data).to.exist;
-        expect(data.id).to.equal('started-container');
+        expect(data.id).to.equal('started-id-1');
         expect(data.services).to.have.property('service1');
         expect(data.services).to.have.property('service2');
         done();

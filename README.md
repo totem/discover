@@ -5,7 +5,7 @@ Discover: Docker Service Discovery
 
 This service watches [Docker](http://docker.io) for containers starting and stopping to publish any advertised services out to [Etcd](https://github.com/coreos/etcd). At this time, consumption of the published services can be done by querying Etcd directly. There are however plans to develop client libraries making this trivial.
 
-THe discovery of services is done by inspecting a custom ENV variable defined in the Dockerfile of the container. The ENV variable describes the service names and local ports they can be found on. Discover translates these to the public IP / Port assigned by Docker.
+The discovery of services is done by inspecting a custom ENV variable defined in the Dockerfile of the container. The ENV variable describes the service names and local ports they can be found on. Discover translates these to the public IP / Port assigned by Docker.
 
 ## How It Works
 
@@ -13,19 +13,23 @@ Discover uses Etcd, a REST based highly-available key/value store, as it's servi
 
 ### Container Configuration
 
-Given the following `Dockerfile` that has been build using `docker build -t static-web-server`:
+Given the following `Dockerfile` that has been build using `docker build -t static-web-server .`:
 
 ```
 FROM totem/ubuntu:raring
+
 RUN apt-get update --fix-missing && apt-get upgrade -y
-RUN apt-get install -y wget curl build-essential patch git-core openssl libssl-dev unzip
-RUN curl http://nodejs.org/dist/v0.10.20/node-v0.10.20-linux-x64.tar.gz | tar xzvf - --strip-components=1 -C "/usr"
+RUN apt-get install -y wget curl build-essential patch git-core openssl libssl-dev unzip ca-certificates python python-dev python-pip
+
+RUN curl http://nodejs.org/dist/v0.10.25/node-v0.10.25-linux-x64.tar.gz | tar xzvf - --strip-components=1 -C "/usr"
+
 RUN apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
 RUN npm install -g node-static
 
 ENV DISCOVER static-web-server:8080
 
-ENTRYPOINT ['static']
+ENTRYPOINT ["static"]
 ```
 
 ### Service Discovery and Publication
@@ -78,21 +82,23 @@ The following configuration options are available:
 
 - `config`: path to JSON file defining custom configuration
 - `discover`
-  - `serviceVariable`: name of the ENV variable to inspect in started containers for published services. Default: DISCOVER
+  - `serviceVariable`: name of the ENV variable to inspect in started containers for published services. Default: *DISCOVER*
 - `docker`
-  - `port`: port to connect to Docker API on. Default: 4243
-  - `host`: host to connect to Docker API on. Default: localhost
-  - `version`: API version to target. Default: v1.5
-  - `socketPath`: path to Docker socket on host. Use of this overrides host/port. Default: false
+  - `port`: port to connect to Docker API on. Default: *4243*
+  - `host`: host to connect to Docker API on. Default: *localhost*
+  - `version`: API version to target. Default: *v1.8*
+  - `socketPath`: path to Docker socket on host. Use of this overrides host/port. Default: *false*
 - `etcd`
-  - `port`: port to connect to Etcd on. Default: 4001
-  - `host`: host to connect to Etcd on. Default: localhost
-  - `prefix`': the prefix to use for all Etcd registry entries. Default: /discover/
+  - `port`: port to connect to Etcd on. Default: *4001*
+  - `host`: host to connect to Etcd on. Default: *localhost*
+  - `prefix`': the prefix to use for all Etcd registry entries. Default: */discover/*
 - `host`:
   - `ip`: the public IP address of the host to use for service routing. Default: IPv4 address of eth0
-  - `realm`: name of the realm this instance of Discover is deployed in. Default: default
-  - `id`: the unique ID of the host this instance of Discover is deployed to. Default: the AWS instance-id if availalbe, falling back to the hostname of the machine
+  - `realm`: name of the realm this instance of Discover is deployed in. Default: *default*
+  - `id`: the unique ID of the host this instance of Discover is deployed to. Default: the AWS instance-id if available, falling back to the hostname of the machine
 - `debug`: enable debug logging
+- `verbose`: enable verbose logging
+- `silly`: enable silly logging
 - `log`: path of file to redirect log output to
 
 ### Configuration via CLI
