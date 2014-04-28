@@ -37,7 +37,7 @@
 * Updated default docker API version to v1.8
 * Updated all dependencies to their latest versions
 
-Note: This relase is required for Docker 0.6.5 and above.
+Note: This release is required for Docker 0.6.5 and above.
 
 ### 0.3.1 (Jan 29, 2014)
 
@@ -52,3 +52,8 @@ Note: This relase is required for Docker 0.6.5 and above.
 
 * Check for valid Etcd / Docker instances before starting.
 * Updated README to reflect current configuration options.
+
+## 0.4.0 (Apr 27, 2014)
+
+* Listen to 'die' event instead of 'stop' event to remove service from registry
+* Updated all dependencies to their latest versions
