@@ -9,8 +9,8 @@ var START_EVENT = module.exports.START_EVENT = {
   time: 1374067924
 };
 
-var STOP_EVENT = module.exports.STOP_EVENT = {
-  status: 'stop',
+var DIE_EVENT = module.exports.DIE_EVENT = {
+  status: 'die',
   id: 'started-id-1',
   from: 'base:latest',
   time: 1374067924
@@ -294,7 +294,7 @@ module.exports.validMock = function (config) {
             cb(new Error('invalid container'));
             break;
         };
-      }        
+      }
     }
   };
 
@@ -315,7 +315,7 @@ module.exports.validEventMock = function (config) {
       var eventStr = JSON.stringify(START_EVENT);
       emitter.emit('data', eventStr);
 
-      eventStr = JSON.stringify(STOP_EVENT);
+      eventStr = JSON.stringify(DIE_EVENT);
       emitter.emit('data', eventStr);
     },
     containers: {
@@ -334,7 +334,7 @@ module.exports.validEventMock = function (config) {
             cb(new Error('invalid container'));
             break;
         };
-      }        
+      }
     }
   };
 
@@ -368,7 +368,7 @@ module.exports.reconcileUnpublishMock = function (config) {
             cb(new Error('invalid container'));
             break;
         };
-      }        
+      }
     }
   };
 
@@ -389,7 +389,7 @@ module.exports.erroredMock = function (config) {
       },
       inspect: function (id, cb) {
         cb(new Error('container inspect error'));
-      }        
+      }
     }
   };
 
@@ -417,7 +417,7 @@ module.exports.malformedMock = function (config) {
             cb(null, CONTAINER_MALFORMED);
             break;
         };
-      }        
+      }
     }
   };
 
