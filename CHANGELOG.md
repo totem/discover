@@ -57,3 +57,7 @@ Note: This release is required for Docker 0.6.5 and above.
 
 * Listen to 'die' event instead of 'stop' event to remove service from registry
 * Updated all dependencies to their latest versions
+
+## 0.4.1 (July 30, 2014)
+
+* Fixed bug where reconciliation would not happen if the host node did not exist in etcd
