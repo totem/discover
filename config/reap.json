@@ -1,0 +1,16 @@
+{
+  "accounts": [
+    ["access key", "secret key"]
+  ],
+  "filters": {
+    "instance-state-name": "running"
+  },
+  "dryRun": true,
+  "force": [],
+  "regions": ["us-west-1"],
+  "etcd": {
+    "prefix": "discover",
+    "host": "127.0.0.1",
+    "port": 4001
+  }
+}
